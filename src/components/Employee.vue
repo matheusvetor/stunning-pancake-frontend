@@ -20,6 +20,7 @@
           <td>{{ employee.position }}</td>
           <td>{{ employee.team }}</td>
           <td>
+            <router-link :to="{ name: 'timeEntries', params: { id: employee.id } }">Adicionar Horários</router-link>
             <router-link :to="{ name: 'editEmployee', params: { id: employee.id } }">Editar</router-link>
             <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
             @click.prevent="removeEmployee(employee)">Deletar</button>
@@ -42,7 +43,7 @@ export default {
   created () {
     this.$http.secured.get('/api/v1/employees')
       .then(response => { this.employees = response.data })
-      .catch(error => this.setError(error, 'Something went wrong'))
+      .catch(error => this.setError(error, 'Algo aconteceu de errado'))
   },
   methods: {
     setError (error, text) {

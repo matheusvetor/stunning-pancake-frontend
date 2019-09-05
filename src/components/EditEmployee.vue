@@ -36,7 +36,7 @@ export default {
     let id = this.$route.params.id
     this.$http.secured.get(`/api/v1/employees/${id}`)
       .then(response => { this.employee = response.data })
-      .catch(error => this.setError(error, 'Something went wrong'))
+      .catch(error => this.setError(error, 'Algo aconteceu de errado'))
   },
   methods: {
     setError (error, text) {
