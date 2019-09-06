@@ -31,8 +31,11 @@
         <div v-if="timeEntry == editedTimeEntry">
           <form action="" @submit.prevent="updateTimeEntry(timeEntry)">
             <div class="mb-6 p-4 bg-white rounded border border-grey-light mt-4">
-              <datetime type="datetime" v-model="timeEntry.entry"></datetime>
-              <input type="submit" value="Update" class=" my-2 bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
+              <datetime type="datetime"
+                  value-zone="America/Sao_Paulo"
+                  v-model="timeEntry.entry">
+              </datetime>
+              <input type="submit" value="Atualizar" class=" my-2 bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
             </div>
           </form>
         </div>
@@ -54,9 +57,13 @@ export default {
     }
   },
   created () {
-    this.$http.secured.get(`/api/v1/employees/${this.employeeId}/time_entries`)
-      .then(response => { this.timeEntries = response.data })
-      .catch(error => this.setError(error, 'Algo aconteceu de errado'))
+    if (!localStorage.signedIn) {
+      this.$router.replace('/')
+    } else {
+      this.$http.secured.get(`/api/v1/employees/${this.employeeId}/time_entries`)
+        .then(response => { this.timeEntries = response.data })
+        .catch(error => this.setError(error, 'Algo aconteceu de errado'))
+    }
   },
   methods: {
     setError (error, text) {

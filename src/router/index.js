@@ -4,11 +4,17 @@ import Employee from '@/components/Employee'
 import NewEmployee from '@/components/NewEmployee'
 import EditEmployee from '@/components/EditEmployee'
 import TimeEntries from '@/components/TimeEntries'
+import Signin from '@/components/Signin'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'Signin',
+      component: Signin
+    },
     {
       path: '/colaboradores',
       name: 'Employee',

@@ -4,6 +4,12 @@
     <h3 class="font-mono font-regular text-3xl mb-4">Adicionar Colaborador</h3>
     <form action="" @submit.prevent="addEmployee">
       <div class="mb-6">
+        <input class="input" autofocus autocomplete="off" placeholder="Email" v-model="newEmployee.email" />
+      </div>
+      <div class="mb-6">
+        <input class="input" autofocus autocomplete="off" placeholder="Senha" v-model="newEmployee.password" />
+      </div>
+      <div class="mb-6">
         <input class="input" autofocus autocomplete="off" placeholder="Nome" v-model="newEmployee.name" />
       </div>
       <div class="mb-6">
@@ -32,6 +38,11 @@ export default {
       error: '',
     }
   },
+  created () {
+    if (!localStorage.signedIn) {
+      this.$router.replace('/')
+    }
+  },
   methods: {
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
@@ -43,6 +54,8 @@ export default {
       }
       this.$http.secured.post('/api/v1/employees/', {
         employee: {
+          email: this.newEmployee.email,
+          password: this.newEmployee.password,
           name: this.newEmployee.name,
           cpf: this.newEmployee.cpf,
           pis: this.newEmployee.pis,

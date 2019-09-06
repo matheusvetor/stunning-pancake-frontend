@@ -41,9 +41,13 @@ export default {
     }
   },
   created () {
-    this.$http.secured.get('/api/v1/employees')
-      .then(response => { this.employees = response.data })
-      .catch(error => this.setError(error, 'Algo aconteceu de errado'))
+    if (!localStorage.signedIn) {
+      this.$router.replace('/')
+    } else {
+      this.$http.secured.get('/api/v1/employees')
+        .then(response => { this.employees = response.data })
+        .catch(error => this.setError(error, 'Algo aconteceu de errado'))
+    }
   },
   methods: {
     setError (error, text) {
