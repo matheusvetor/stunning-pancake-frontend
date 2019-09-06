@@ -1,9 +1,9 @@
 <template>
-  <div class="max-w-lg m-auto py-10 mt-0 border-t border-b border-gray-300 overflow-hidden relative">
-    <router-link :to="{ name: 'addEmployee' }">Adicionar</router-link>
-    <table class="w-full text-left table-collapse">
+  <div class="container">
+    <router-link :to="{ name: 'addEmployee' }" class="btn btn-primary mb-3">Adicionar</router-link>
+    <table class="table">
       <thead>
-        <tr class="text-sm font-semibold text-gray-700 p-2 bg-gray-100">
+        <tr class="">
           <th>Nome</th>
           <th>CPF</th>
           <th>PIS</th>
@@ -20,9 +20,9 @@
           <td>{{ employee.position }}</td>
           <td>{{ employee.team }}</td>
           <td>
-            <router-link :to="{ name: 'timeEntries', params: { id: employee.id } }">Adicionar Horários</router-link>
-            <router-link :to="{ name: 'editEmployee', params: { id: employee.id } }">Editar</router-link>
-            <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
+            <router-link :to="{ name: 'timeEntries', params: { id: employee.id } }" class="btn btn-success">Adicionar Horários</router-link>
+            <router-link :to="{ name: 'editEmployee', params: { id: employee.id } }" class="btn btn-success">Editar</router-link>
+            <button class="btn btn-danger"
             @click.prevent="removeEmployee(employee)">Deletar</button>
           </td>
         </tr>

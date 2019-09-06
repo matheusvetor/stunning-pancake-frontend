@@ -1,15 +1,20 @@
 <template>
-  <header class="bg-grey-lighter py-4">
-    <div class="container m-auto flex flex-wrap items-center justify-end">
-      <div class="flex-1 flex items-center">
-        <a href="/" class="uppercase text-sm font-mono pl-4 font-semibold no-underline text-indigo-dark hover:text-indigo-darker">Code Challenge</a>
-      </div>
-      <div>
-        <router-link to="/colaboradores" class="link-grey px-2 no-underline" v-if="signedIn() && isAdmin()">Colaboradores</router-link>
-        <a href="#" @click.prevent="signOut" class="link-grey px-2 no-underline" v-if="signedIn()">Sign out</a>
-      </div>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <router-link to="/colaboradores" class="nav-link" v-if="signedIn() && isAdmin()">Colaboradores</router-link>
+        </li>
+        <li class="nav-item">
+          <a href="#" @click.prevent="signOut" class="nav-link" v-if="signedIn()">Sign out</a>
+        </li>
+      </ul>
     </div>
-  </header>
+  </nav>
 </template>
 
 <script>

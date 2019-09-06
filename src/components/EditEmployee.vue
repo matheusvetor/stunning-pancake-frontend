@@ -1,24 +1,30 @@
 <template>
-  <div class="max-w-md m-auto py-10">
+  <div class="container">
     <div class="text-red" v-if="error">{{ error }}</div>
     <h3 class="font-mono font-regular text-3xl mb-4">Editar Colaborador</h3>
     <form action="" @submit.prevent="updateEmployee">
-      <div class="mb-6">
-        <input class="input" autofocus autocomplete="off" placeholder="Nome" v-model="employee.name" />
+      <div class="form-group">
+        <input class="form-control" autofocus autocomplete="off" placeholder="Email" v-model="employee.email" />
       </div>
-      <div class="mb-6">
-        <input class="input" autofocus autocomplete="off" placeholder="Cpf" v-model="employee.cpf" />
+      <div class="form-group">
+        <input class="form-control" autofocus autocomplete="off" placeholder="Senha" v-model="employee.password" />
       </div>
-      <div class="mb-6">
-        <input class="input" autofocus autocomplete="off" placeholder="PIS" v-model="employee.pis" />
+      <div class="form-group">
+        <input class="form-control" autofocus autocomplete="off" placeholder="Nome" v-model="employee.name" />
       </div>
-      <div class="mb-6">
-        <input class="input" autofocus autocomplete="off" placeholder="Cargo" v-model="employee.position" />
+      <div class="form-group">
+        <input class="form-control" autofocus autocomplete="off" placeholder="Cpf" v-model="employee.cpf" />
       </div>
-      <div class="mb-6">
-        <input class="input" autofocus autocomplete="off" placeholder="Time" v-model="employee.team" />
+      <div class="form-group">
+        <input class="form-control" autofocus autocomplete="off" placeholder="PIS" v-model="employee.pis" />
       </div>
-      <input type="submit" value="Editar Colaborador" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green-600 hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
+      <div class="form-group">
+        <input class="form-control" autofocus autocomplete="off" placeholder="Cargo" v-model="employee.position" />
+      </div>
+      <div class="form-group">
+        <input class="form-control" autofocus autocomplete="off" placeholder="Time" v-model="employee.team" />
+      </div>
+      <input type="submit" value="Editar Colaborador" class="btn btn-primary" />
     </form>
   </div>
 </template>

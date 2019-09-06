@@ -6,12 +6,17 @@ import router from './router'
 import VueAxios from 'vue-axios'
 import Datetime from 'vue-datetime'
 import { securedAxiosInstance, plainAxiosInstance } from './backend/axios'
-import './main.css'
+import BootstrapVue from 'bootstrap-vue'
+import moment from 'moment'
 import 'vue-datetime/dist/vue-datetime.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import './main.css'
 
 Vue.config.productionTip = false
 
 Vue.use(Datetime)
+Vue.use(BootstrapVue)
 Vue.use(VueAxios, {
   secured: securedAxiosInstance,
   plain: plainAxiosInstance
@@ -21,6 +26,7 @@ Vue.use(VueAxios, {
 new Vue({
   el: '#app',
   router,
+  moment,
   securedAxiosInstance,
   plainAxiosInstance,
   components: { App },

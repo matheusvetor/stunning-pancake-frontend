@@ -1,50 +1,52 @@
 <template>
-  <div class="max-w-md m-auto py-10">
+  <div class="container">
     <div class="text-red" v-if="error">{{ error }}</div>
-    <h3 class="font-mono font-regular text-3xl mb-4">Adicionar Horário</h3>
+    <h3 class="">Adicionar Horário</h3>
     <form action="" @submit.prevent="addTimeEntry">
-      <div class="mb-6">
+      <div class="form-group">
         <datetime type="datetime"
+                  input-class="form-control"
                   value-zone="America/Sao_Paulo"
                   v-model="newTimeEntry.entry">
         </datetime>
       </div>
-      <input type="submit" value="Adicionar Horário" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
+
+      <input type="submit" value="Adicionar Horário" class="btn btn-primary" />
     </form>
 
-    <hr class="border border-grey-light my-6" />
+    <hr class="" />
 
-    <ul class="list-reset mt-4">
-      <li class="py-4" v-for="timeEntry in timeEntries" :key="timeEntry.id" :timeEntry="timeEntry">
+    <div class="card mb-2" v-for="timeEntry in timeEntries" :key="timeEntry.id" :timeEntry="timeEntry">
+      <div class="card-body">
+        <h5 class="card-title">{{ customFormatter(timeEntry.entry) }}</h5>
 
-        <div class="flex items-center justify-between flex-wrap">
-          <p class="block flex-1 font-mono font-semibold flex items-center ">
-            {{ timeEntry.entry }}
-          </p>
-          <button class="bg-tranparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded"
-          @click.prevent="editTimeEntry(timeEntry)">Editar</button>
+        <button class="btn btn-sm btn-primary"
+        @click.prevent="editTimeEntry(timeEntry)">Editar</button>
 
-          <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
-         @click.prevent="removeTimeEntry(timeEntry)">Deletar</button>
-        </div>
+        <button class="btn btn-sm btn-danger"
+        @click.prevent="removeTimeEntry(timeEntry)">Deletar</button>
 
-        <div v-if="timeEntry == editedTimeEntry">
+        <div v-if="timeEntry == editedTimeEntry" class="mt-2">
           <form action="" @submit.prevent="updateTimeEntry(timeEntry)">
-            <div class="mb-6 p-4 bg-white rounded border border-grey-light mt-4">
+            <div class="form-group">
               <datetime type="datetime"
                   value-zone="America/Sao_Paulo"
+                  input-class="form-control"
                   v-model="timeEntry.entry">
               </datetime>
-              <input type="submit" value="Atualizar" class=" my-2 bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
             </div>
+            <input type="submit" value="Atualizar" class="btn btn-primary">
           </form>
         </div>
-      </li>
-    </ul>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
 <script>
+import moment from 'moment'
 export default {
   name: 'TimeEntries',
   data () {
@@ -66,6 +68,9 @@ export default {
     }
   },
   methods: {
+    customFormatter(date) {
+      return moment(date).format('DD/MM/YYYY HH:mm')
+    },
     setError (error, text) {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },

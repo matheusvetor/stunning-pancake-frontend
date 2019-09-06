@@ -1,23 +1,13 @@
 <template>
-  <div class="max-w-sm m-auto my-8">
-    <div class="border p-10 border-grey-light shadow rounded">
-      <h3 class="text-2xl mb-6 text-grey-darkest">Login</h3>
-      <form @submit.prevent="signin">
-        <div class="text-red" v-if="error">{{ error }}</div>
-
-        <div class="mb-6">
-          <label for="email" class="label">E-mail</label>
-          <input type="email" v-model="email" class="input" id="email" placeholder="email@email.com">
-        </div>
-        <div class="mb-6">
-          <label for="password" class="label">Senha</label>
-          <input type="password" v-model="password" class="input" id="password" placeholder="Senha">
-        </div>
-        <button type="submit" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center">Entrar</button>
-
-      </form>
-    </div>
-  </div>
+  <form class="form-signin" @submit.prevent="signin">
+    <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
+    <div class="text-red" v-if="error">{{ error }}</div>
+    <label for="inputEmail" class="sr-only">Endereço de email</label>
+    <input type="email" v-model="email" class="form-control" id="email" placeholder="email@email.com">
+    <label for="inputPassword" class="sr-only">Senha</label>
+    <input type="password" v-model="password" class="form-control" id="password" placeholder="Senha">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  </form>
 </template>
 
 <script>
@@ -69,3 +59,50 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
