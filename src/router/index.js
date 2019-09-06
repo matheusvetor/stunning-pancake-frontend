@@ -34,6 +34,11 @@ export default new Router({
       path: '/colaboradores/:id/horarios',
       name: 'timeEntries',
       component: TimeEntries
+    },
+    {
+      path: '/horarios',
+      name: 'timeEntries',
+      component: TimeEntries
     }
   ]
 })

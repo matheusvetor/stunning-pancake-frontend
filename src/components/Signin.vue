@@ -50,6 +50,7 @@ export default {
       localStorage.csrf = response.data.csrf
       localStorage.signedIn = true
       localStorage.isAdmin = response.data.is_admin
+      localStorage.employeeId = response.data.employee_id
       this.error = ''
       this.$router.replace('/colaboradores')
     },
@@ -58,6 +59,7 @@ export default {
       delete localStorage.csrf
       delete localStorage.signedIn
       delete localStorage.isAdmin
+      delete localStorage.employeeId
     },
     checkSignedIn () {
       if (localStorage.signedIn) {

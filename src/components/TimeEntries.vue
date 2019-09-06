@@ -53,7 +53,7 @@ export default {
       newTimeEntry: [],
       error: '',
       editedTimeEntry: '',
-      employeeId: this.$route.params.id
+      employeeId: this.$route.params.id || localStorage.employeeId
     }
   },
   created () {

@@ -44,6 +44,9 @@ export default {
     if (!localStorage.signedIn) {
       this.$router.replace('/')
     } else {
+      if (localStorage.isAdmin !== 'true') {
+        this.$router.replace('/horarios')
+      }
       this.$http.secured.get('/api/v1/employees')
         .then(response => { this.employees = response.data })
         .catch(error => this.setError(error, 'Algo aconteceu de errado'))
