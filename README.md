@@ -1,30 +1,13 @@
-# pontomais-front
+# README
 
-> A Vue.js project
+Este projeto provê um frontend para gerenciamento de Colaboradores e horários.
 
-## Build Setup
+Foi utilizado neste projeto VueJS 2.6
 
-``` bash
-# install dependencies
-npm install
+Este projeto está hospedado no [Heroku](https://stunning-pancake-front.herokuapp.com)
 
-# serve with hot reload at localhost:8080
-npm run dev
+A aplicação está dockerizada:
 
-# build for production with minification
-npm run build
+`docker-compose run frontend yarn install` irá deixar a aplicação pronta para utilização.
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+`docker-compose up` irá iniciar a aplicação em `localhost:8080`.
