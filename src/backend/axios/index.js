@@ -14,6 +14,7 @@ const plainAxiosInstance = axios.create({
   baseURL: API_URL,
   withCredentials: true,
   headers: {
+    ...config.headers,
     'Content-Type': 'application/json'
   }
 })
