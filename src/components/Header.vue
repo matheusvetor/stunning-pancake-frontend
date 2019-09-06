@@ -10,7 +10,7 @@
           <router-link to="/colaboradores" class="nav-link" v-if="signedIn() && isAdmin()">Colaboradores</router-link>
         </li>
         <li class="nav-item">
-          <a href="#" @click.prevent="signOut" class="nav-link" v-if="signedIn()">Sign out</a>
+          <a href="#" @click.prevent="signOut" class="nav-link" v-if="signedIn()">Sair</a>
         </li>
       </ul>
     </div>
